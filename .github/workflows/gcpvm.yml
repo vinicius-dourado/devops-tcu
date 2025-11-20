@@ -1,11 +1,13 @@
-name: Deploy html para GCP VM
+name: Deploy HTML para GCP VM # Corrigido: Linha separada
 
-on:
+on: # Corrigido: Linha separada e indentação base
   push:
     branches:
       - main # Aciona o deploy quando houver um push ou merge na branch 'main'
     paths:
-      - '/'
+      # Corrigido: Lista explícita de arquivos para monitorar
+      - 'index.html'
+      - 'styles.css'
 
 jobs:
   deploy_static_file:
