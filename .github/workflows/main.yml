@@ -44,4 +44,4 @@ jobs:
         # O usuário padrão para imagens Debian é 'debian' ou 'appuser' (depende da sua config SSH/Terraform)
         run: |
           gcloud compute scp --zone=southamerica-east1-a \
-            ./index.html vtad_data_engineering@${{ env.VM_IP }}:/var/www/html/index.html
+            ./index.html vtad_data_engineering@example-vm:/var/www/html/index.html
