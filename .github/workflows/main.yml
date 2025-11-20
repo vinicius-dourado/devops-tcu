@@ -42,7 +42,7 @@ jobs:
       # 4. Copiar o index.html usando SCP (Secure Copy)
       # Aqui usamos a conta de serviço (GCP) para autenticação e o SCP
       - name: Carregar index.html via SCP
-        # O usuário padrão para imagens Debian é 'debian' ou 'appuser' (depende da sua config SSH/Terraform)
+        # O usuário padrão para imagens Debdian é 'debian' ou 'appuser' (depende da sua config SSH/Terraform)
         run: |
           gcloud compute scp --zone=southamerica-east1-a \
             ./index.html vtad_data_engineering@example-vm:/var/www/html/index.html \
