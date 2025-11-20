@@ -6,7 +6,6 @@ on:
       - main # Aciona o deploy quando houver um push ou merge na branch 'main'
     paths:
       - 'index.html' # Só executa se o index.html for alterado
-      - 'styles.css'
 
 jobs:
   deploy_static_file:
