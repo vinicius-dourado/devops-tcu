@@ -1,0 +1,104 @@
+/* Importação básica de fonte */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #fff;
+    color: #333;
+    position: relative; /* Para posicionar os blobs laterais */
+    overflow: hidden; /* Para esconder qualquer parte dos blobs que saia da tela */
+}
+
+/* --- Container Central --- */
+.container {
+    text-align: center;
+    z-index: 10; /* Garante que o conteúdo fique acima dos blobs */
+}
+
+/* --- Estilo do Logo --- */
+.logo-evernote {
+    width: 60px; /* Tamanho do ícone verde */
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+/* --- Estilo da Caixa de Login (Conteúdo Principal) --- */
+.login-box {
+    padding: 20px;
+    max-width: 350px;
+}
+
+.login-box h1 {
+    font-size: 2.2em;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.login-box p {
+    font-size: 1em;
+    color: #6a6a6a;
+    margin-top: 0;
+}
+
+/* --- Blobs Laterais (As formas orgânicas) --- */
+
+/* Base para as formas (posicionamento absoluto) */
+.green-blob, .pink-blob {
+    position: absolute;
+    z-index: 1;
+    width: 500px;
+    height: 500px;
+    /* Usamos um border-radius complexo para criar formas orgânicas */
+    border-radius: 40% 60% 70% 30% / 60% 40% 60% 40%;
+}
+
+/* Blob Verde (Canto Superior Esquerdo) */
+.green-blob {
+    background-color: #92e646; /* Verde claro da imagem */
+    left: -200px; /* Puxa para fora da tela */
+    top: -150px; 
+    transform: rotate(30deg); /* Rotação para o efeito de "estrela" */
+}
+
+/* Blob Rosa (Canto Inferior Direito) */
+.pink-blob {
+    background-color: #f7b0f3; /* Rosa claro da imagem */
+    right: -250px; /* Puxa para fora da tela */
+    bottom: -100px;
+    /* Outra forma de border-radius para um formato diferente */
+    border-radius: 60% 40% 40% 60% / 70% 30% 70% 30%;
+}
+
+/* --- Rodapé --- */
+footer {
+    position: absolute;
+    bottom: 20px;
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 0.8em;
+    color: #999;
+    z-index: 10; /* Acima dos blobs */
+}
+
+.copyright {
+    margin: 0;
+}
+
+.footer-links a {
+    color: #999;
+    text-decoration: none;
+    margin-left: 15px;
+    transition: color 0.2s;
+}
+
+.footer-links a:hover {
+    color: #666;
+}
