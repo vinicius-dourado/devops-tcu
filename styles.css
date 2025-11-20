@@ -85,7 +85,7 @@ footer {
     align-items: flex-end;
     font-size: 0.8em;
     color: #999;
-    z-index: 10; /* Acima dos blobs */
+    z-index: 10; /* Acima dos blobs dsd*/
 }
 
 .copyright {
