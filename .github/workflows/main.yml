@@ -46,7 +46,3 @@ jobs:
           # Copia o index.html
           gcloud compute scp --zone=southamerica-east1-a \
             ./index.html vtad_data_engineering@example-vm:/var/www/html/index.html
-            
-          # Copia o styles.css (Nova Chamada)
-          gcloud compute scp --zone=southamerica-east1-a \
-            ./styles.css vtad_data_engineering@example-vm:/var/www/html/styles.css
