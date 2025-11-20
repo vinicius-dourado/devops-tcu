@@ -1,0 +1,48 @@
+name: Deploy html para GCP VM
+
+on:
+  push:
+    branches:
+      - main # Aciona o deploy quando houver um push ou merge na branch 'main'
+    paths:
+      - 'index.html'
+
+jobs:
+  deploy_static_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # 1. Autenticar no Google Cloud
+      # Usa a chave da Service Account (GCP_SA_KEY) que você já configurou como Secret
+      - name: Autenticar para Google Cloud
+        uses: 'google-github-actions/auth@v2'
+        with:
+          credentials_json: ${{ secrets.GCP_SA_KEY }}
+
+      # 2. Configurar o Cloud SDK (gcloud)
+      - name: Definir para cima Google Cloud SDK
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }} # Usa o ID do projeto que você configurou como Secret
+
+      # 3. Obter o IP Externo da VM
+      # Você precisa substituir 'example-vm' pelo nome da sua instância
+      # e 'southamerica-east1-a' pela zona correta.
+      - name: Obter IP Público da VM
+        id: get_ip
+        run: |
+          VM_IP=$(gcloud compute instances describe example-vm --zone=southamerica-east1-a --format='get(networkInterfaces[0].accessConfigs[0].natIP)')
+          echo "VM_IP=$VM_IP" >> $GITHUB_ENV
+          echo "IP da VM: $VM_IP"
+
+      # 4. Copiar o index.html usando SCP (Secure Copy)
+      # Aqui usamos a conta de serviço (GCP) para autenticação e o SCP
+      - name: Carregar index.html via SCP
+        # O usuário padrão para imagens Debian é 'debian' ou 'appuser' (depende da sua config SSH/Terraform)
+        run: |
+          # Copia o index.html
+          gcloud compute scp --zone=southamerica-east1-a \
+            ./index.html vtad_data_engineering@example-vm:/var/www/html/index.html
