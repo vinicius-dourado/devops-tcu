@@ -6,6 +6,7 @@ on:
       - main # Aciona o deploy quando houver um push ou merge na branch 'main'
     paths:
       - 'index.html' # Só executa se o index.html for alterado
+      - 'styles.css' # Só executa se o index.html for alterado
 
 jobs:
   deploy_static_file:
@@ -43,5 +44,10 @@ jobs:
       - name: Carregar index.html via SCP
         # O usuário padrão para imagens Debian é 'debian' ou 'appuser' (depende da sua config SSH/Terraform)
         run: |
+          # Copia o index.html
           gcloud compute scp --zone=southamerica-east1-a \
             ./index.html vtad_data_engineering@example-vm:/var/www/html/index.html
+            
+          # Copia o styles.css (Nova Chamada)
+          gcloud compute scp --zone=southamerica-east1-a \
+            ./styles.css vtad_data_engineering@example-vm:/var/www/html/styles.css
