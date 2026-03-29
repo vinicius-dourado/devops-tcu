@@ -1,0 +1,62 @@
+[project]
+name = "radar-transparencia"
+version = "0.1.0"
+description = "Sistema multi-agente para rastreamento de transparência pública municipal no Brasil"
+readme = "README.md"
+requires-python = ">=3.11"
+
+dependencies = [
+    "anthropic>=0.40.0",
+    "httpx>=0.27.0",
+    "pydantic>=2.0.0",
+    "aiosqlite>=0.20.0",
+    "beautifulsoup4>=4.12.0",
+    "lxml>=5.0.0",
+    "pdfplumber>=0.11.0",
+    "fastapi>=0.115.0",
+    "uvicorn>=0.30.0",
+    "streamlit>=1.38.0",
+    "plotly>=5.24.0",
+    "python-dotenv>=1.0.0",
+    "tenacity>=9.0.0",
+    "rich>=13.0.0",
+    "click>=8.1.0",
+    "tqdm>=4.66.0",
+    "pandas>=2.0.0",
+    "openpyxl>=3.1.0",
+]
+
+[project.optional-dependencies]
+browser = [
+    "playwright>=1.48.0",
+]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+    "ruff>=0.7.0",
+    "httpx>=0.27.0",
+]
+
+[project.scripts]
+radar-pipeline = "scripts.run_pipeline:cli"
+radar-seed = "scripts.seed_municipios:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.backends.legacy:build"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["agents*", "config*", "core*", "extractors*", "integrations*", "pipeline*", "api*", "scripts*"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["E501"]

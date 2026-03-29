@@ -1,0 +1,12 @@
+[
+  {"codigo_ibge": "3550308", "nome": "São Paulo", "uf": "SP", "populacao": 12400000},
+  {"codigo_ibge": "3304557", "nome": "Rio de Janeiro", "uf": "RJ", "populacao": 6700000},
+  {"codigo_ibge": "5300108", "nome": "Brasília", "uf": "DF", "populacao": 3100000},
+  {"codigo_ibge": "2927408", "nome": "Salvador", "uf": "BA", "populacao": 2900000},
+  {"codigo_ibge": "1302603", "nome": "Manaus", "uf": "AM", "populacao": 2200000},
+  {"codigo_ibge": "2611606", "nome": "Recife", "uf": "PE", "populacao": 1600000},
+  {"codigo_ibge": "3106200", "nome": "Belo Horizonte", "uf": "MG", "populacao": 2500000},
+  {"codigo_ibge": "2507507", "nome": "João Pessoa", "uf": "PB", "populacao": 820000},
+  {"codigo_ibge": "3509502", "nome": "Campinas", "uf": "SP", "populacao": 1200000},
+  {"codigo_ibge": "2211001", "nome": "Teresina", "uf": "PI", "populacao": 870000}
+]
